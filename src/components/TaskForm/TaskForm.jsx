@@ -1,10 +1,22 @@
+import { useDispatch } from 'react-redux';
+import { addTask } from '../../Redux/actions';
+
 import { Button } from '../Button/Button';
 import css from './TaskForm.module.css';
 
 export const TaskForm = () => {
-  const handleSubmit = (event) => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
+    dispatch(
+      addTask({
+        id: crypto.randomUUID(),
+        text: form.elements.text.value,
+        completed: false,
+      })
+    );
     form.reset();
   };
 
