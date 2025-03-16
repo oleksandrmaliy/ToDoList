@@ -5,6 +5,7 @@ import css from './TaskCounter.module.css';
 export const TaskCounter = () => {
   const tasks = useSelector(state => state.tasks.items);
 
+  // 3. На базі стану Redux отримуємо похідні дані
   const count = tasks.reduce(
     (acc, task) => {
       if (task.completed) {
@@ -14,7 +15,7 @@ export const TaskCounter = () => {
       }
       return acc;
     },
-    { completed: 0, active: 0 }
+    { active: 0, completed: 0 }
   );
 
   return (
