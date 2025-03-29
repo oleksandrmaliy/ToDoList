@@ -23,22 +23,6 @@ export const selectVisibleTasks = createSelector(
   }
 );
 
-// export const selectTaskCount = state => {
-//   const tasks = selectTasks(state);
-
-//   return tasks.reduce(
-//     (count, task) => {
-//       if (task.completed) {
-//         count.completed += 1;
-//       } else {
-//         count.active += 1;
-//       }
-//       return count;
-//     },
-//     { active: 0, completed: 0 }
-//   );
-// };
-
 export const selectTaskCount = createSelector([selectTasks], tasks => {
   console.log('Calculating task count. Now memoized!');
 
@@ -104,22 +88,6 @@ const tasksSlice = createSlice({
       })
       .addCase(toggleCompleted.rejected, handleRejected);
   },
-  // reducers: {
-  // 	fetchInProgress(state) {
-  // 		state.isLoading = true;
-  // 	},
-  // 	fetchSuccess(state, action) {
-  // 		state.isLoading = false;
-  // 		state.error = null;
-  // 		state.items = action.payload;
-  // 	},
-  // 	fetchError(state, action) {
-  // 		state.isLoading = false;
-  // 		state.error = action.payload;
-  // 	},
-  // },
 });
-
-// export const { fetchInProgress, fetchSuccess, fetchError } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
